@@ -66,4 +66,4 @@ preprocess_images(image_folder_mines, processed_folder_mines, target_size)
 preprocess_images(image_folder_pasmines, processed_folder_pasmines, target_size)
 
 # Afficher un échantillon
-display_sample_image(processed_folder)
+display_sample_image(processed_folder_mines)
