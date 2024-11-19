@@ -30,3 +30,6 @@ val_data = datagen.flow_from_directory(
     class_mode='binary',
     subset='validation'
 )
+# Vérifier que les données ont été correctement chargées
+print(f"Nombre d'images d'entraînement : {train_data.samples}")
+print(f"Nombre d'images de validation : {val_data.samples}")
