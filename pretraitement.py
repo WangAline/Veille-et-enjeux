@@ -3,9 +3,7 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Dossier contenant les images
-image_folder = 'imagesMine'
-processed_folder = 'processed_images'
+
 
 # Taille cible des images
 target_size = (224, 224)
@@ -56,8 +54,16 @@ def display_sample_image(processed_folder):
     else:
         print("No processed images to display.")
 
+# Dossier contenant les images
+image_folder_mines = 'imagesMine'
+processed_folder_mines = 'processed_mines'
+# Dossier contenant les images
+image_folder_pasmines = 'imagesPasMine'
+processed_folder_pasmines = 'processed_pasmines'
+
 # Appeler la fonction pour prétraiter les images
-preprocess_images(image_folder, processed_folder, target_size)
+preprocess_images(image_folder_mines, processed_folder_mines, target_size)
+preprocess_images(image_folder_pasmines, processed_folder_pasmines, target_size)
 
 # Afficher un échantillon
 display_sample_image(processed_folder)
