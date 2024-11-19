@@ -56,10 +56,10 @@ def display_sample_image(processed_folder):
 
 # Dossier contenant les images
 image_folder_mines = 'imagesMine'
-processed_folder_mines = 'processed_mines'
+processed_folder_mines = 'processed_images/processed_mines'
 # Dossier contenant les images
 image_folder_pasmines = 'imagesPasMine'
-processed_folder_pasmines = 'processed_pasmines'
+processed_folder_pasmines = 'processed_images/processed_pasmines'
 
 # Appeler la fonction pour prétraiter les images
 preprocess_images(image_folder_mines, processed_folder_mines, target_size)
