@@ -1,34 +1,32 @@
 import os
+import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-# Chemin vers le dossier racine contenant les sous-dossiers
-base_dir = "images"  # Change si nécessaire
+# Répertoires des données
+data_dir = 'processed_images'
+target_size = (224, 224)  # Doit correspondre au prétraitement
 batch_size = 32
-image_size = (224, 224)  # Taille des images redimensionnées (comme prétraitées)
 
-# Création d'un générateur d'images avec augmentation des données
+# Création d'un générateur d'images
 datagen = ImageDataGenerator(
-    rescale=1./255,       # Normalisation des pixels entre 0 et 1
-    validation_split=0.2  # Séparer en 80% entraînement / 20% validation
+    rescale=1./255,  # Normalisation des pixels
+    validation_split=0.2  # Séparer les données en 80% train / 20% validation
 )
 
 # Chargement des données d'entraînement
 train_data = datagen.flow_from_directory(
-    base_dir,
-    target_size=image_size,
+    data_dir,
+    target_size=target_size,
     batch_size=batch_size,
-    class_mode='binary',  # Classes binaires : Mine (1) ou PasMine (0)
-    subset='training'     # Ensemble d'entraînement
+    class_mode='binary',  # Pour un problème binaire : "mine" ou "non-mine"
+    subset='training'
 )
 
 # Chargement des données de validation
 val_data = datagen.flow_from_directory(
-    base_dir,
-    target_size=image_size,
+    data_dir,
+    target_size=target_size,
     batch_size=batch_size,
     class_mode='binary',
-    subset='validation'   # Ensemble de validation
+    subset='validation'
 )
-
-# Affichage des classes associées
-print(f"Classes trouvées : {train_data.class_indices}")
